@@ -225,133 +225,57 @@
         </div>
     </section>
 
-    <!-- ================= CONTACT & GET IN TOUCH ================= -->
-    <section id="contact" class="py-24 border-t border-white/5 bg-brand-dark/80 relative">
+    <!-- ================= CONTACT SECTION (DIRECT INQUIRY) ================= -->
+    <section id="contact" class="py-28 border-t border-white/5 bg-brand-dark/80 relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-6 sm:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-                
-                <!-- Left Details -->
-                <div class="lg:col-span-5 space-y-6">
-                    <span class="text-xs tracking-luxury uppercase text-brand-blue font-semibold">Initiate Contact</span>
-                    <h2 class="text-3xl sm:text-5xl font-light tracking-tight text-white leading-tight">
+            <div class="relative border border-white/10 bg-brand-card/30 backdrop-blur-sm p-10 sm:p-16 lg:p-20 overflow-hidden">
+                <!-- Ambient Accent Glow -->
+                <div class="absolute -top-24 -right-24 w-96 h-96 bg-brand-blue/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+                <div class="max-w-3xl space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 border border-white/10 bg-white/[0.02] text-[11px] tracking-luxury uppercase text-neutral-400">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                        Open for Opportunities
+                    </div>
+
+                    <h2 class="text-3xl sm:text-5xl lg:text-6xl font-light tracking-tight text-white leading-tight">
                         Let's build reliable, high-performance systems.
                     </h2>
-                    <p class="text-neutral-400 text-sm font-light leading-relaxed">
-                        Open for backend engineering discussions, software architecture, API integrations, and full-stack Laravel opportunities.
+
+                    <p class="text-neutral-400 text-sm sm:text-base font-light leading-relaxed max-w-2xl">
+                        Whether you are planning a new Laravel backend, need to architect scalable APIs, or want to discuss database optimization and system integrity, my inbox is open.
                     </p>
 
-                    <div class="pt-6 space-y-4 text-xs font-mono text-neutral-400">
-                        <div class="flex items-center space-x-3">
-                            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                            <span class="text-neutral-300">Available for contract &amp; backend roles</span>
-                        </div>
-                        <div class="flex items-center space-x-3">
-                            <span class="text-neutral-600">Direct:</span>
-                            <a href="mailto:adnan.mahmoudi.dev@gmail.com" class="text-neutral-300 hover:text-white transition-colors duration-200">adnan.mahmoudi.dev@gmail.com</a>
-                        </div>
+                    <div class="pt-6 flex flex-wrap gap-4 items-center">
+                        <a href="mailto:adnan.mahmoudi.dev@gmail.com?subject=Backend%20Engineering%20Inquiry" 
+                           class="group inline-flex items-center gap-3 px-8 py-4 bg-white text-black hover:bg-neutral-200 text-xs font-semibold tracking-luxury uppercase transition-all duration-200">
+                            <svg class="w-4 h-4 transition-transform group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                            </svg>
+                            <span>Initiate Contact via Email</span>
+                        </a>
+
+                        <a href="https://github.com/AdnanMahmoudiDev" 
+                           target="_blank" 
+                           rel="noopener noreferrer" 
+                           class="inline-flex items-center gap-2 px-8 py-4 border border-white/20 text-white hover:border-white text-xs font-semibold tracking-luxury uppercase transition-all duration-200">
+                            <span>Explore GitHub</span>
+                            <span class="text-sm font-mono">&rarr;</span>
+                        </a>
+                    </div>
+
+                    <div class="pt-4 text-xs font-mono text-neutral-500">
+                        <span>Direct Communication: </span>
+                        <a href="mailto:adnan.mahmoudi.dev@gmail.com" class="text-neutral-300 hover:text-white transition-colors duration-200">
+                            adnan.mahmoudi.dev@gmail.com
+                        </a>
                     </div>
                 </div>
-
-                <!-- Right Form -->
-                <div class="lg:col-span-7 bg-brand-card/40 border border-white/5 p-8 sm:p-10 backdrop-blur-sm">
-                    
-                    {{-- Flash Success Alert --}}
-                    @if(session('success'))
-                        <div class="mb-8 p-4 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono flex items-center space-x-3">
-                            <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            <span>{{ session('success') }}</span>
-                        </div>
-                    @endif
-
-                    <form action="{{ route('contact.store') }}" method="POST" class="space-y-6">
-                        @csrf
-
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <!-- Name -->
-                            <div>
-                                <label for="name" class="block text-xs uppercase tracking-luxury text-neutral-400 mb-2">
-                                    Name <span class="text-brand-blue">*</span>
-                                </label>
-                                <input type="text" 
-                                       name="name" 
-                                       id="name" 
-                                       value="{{ old('name') }}" 
-                                       required 
-                                       placeholder="Your name"
-                                       class="w-full bg-brand-dark/90 border @error('name') border-rose-500/60 @else border-white/10 @enderror px-4 py-3 text-sm text-neutral-200 placeholder-neutral-600 focus:outline-none focus:border-brand-blue transition">
-                                @error('name')
-                                    <p class="mt-1.5 text-xs text-rose-400 font-mono">{{ $message }}</p>
-                                @enderror
-                            </div>
-
-                            <!-- Email -->
-                            <div>
-                                <label for="email" class="block text-xs uppercase tracking-luxury text-neutral-400 mb-2">
-                                    Email <span class="text-brand-blue">*</span>
-                                </label>
-                                <input type="email" 
-                                       name="email" 
-                                       id="email" 
-                                       value="{{ old('email') }}" 
-                                       required 
-                                       placeholder="your.email@example.com"
-                                       class="w-full bg-brand-dark/90 border @error('email') border-rose-500/60 @else border-white/10 @enderror px-4 py-3 text-sm text-neutral-200 placeholder-neutral-600 focus:outline-none focus:border-brand-blue transition">
-                                @error('email')
-                                    <p class="mt-1.5 text-xs text-rose-400 font-mono">{{ $message }}</p>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <!-- Subject -->
-                        <div>
-                            <label for="subject" class="block text-xs uppercase tracking-luxury text-neutral-400 mb-2">
-                                Subject
-                            </label>
-                            <input type="text" 
-                                   name="subject" 
-                                   id="subject" 
-                                   value="{{ old('subject') }}" 
-                                   placeholder="Project inquiry or architecture discussion"
-                                   class="w-full bg-brand-dark/90 border @error('subject') border-rose-500/60 @else border-white/10 @enderror px-4 py-3 text-sm text-neutral-200 placeholder-neutral-600 focus:outline-none focus:border-brand-blue transition">
-                            @error('subject')
-                                <p class="mt-1.5 text-xs text-rose-400 font-mono">{{ $message }}</p>
-                            @enderror
-                        </div>
-
-                        <!-- Message -->
-                        <div>
-                            <label for="message" class="block text-xs uppercase tracking-luxury text-neutral-400 mb-2">
-                                Message <span class="text-brand-blue">*</span>
-                            </label>
-                            <textarea name="message" 
-                                      id="message" 
-                                      rows="5" 
-                                      required 
-                                      placeholder="Briefly state your requirements or architecture challenge..."
-                                      class="w-full bg-brand-dark/90 border @error('message') border-rose-500/60 @else border-white/10 @enderror px-4 py-3 text-sm text-neutral-200 placeholder-neutral-600 focus:outline-none focus:border-brand-blue transition resize-y">{{ old('message') }}</textarea>
-                            @error('message')
-                                <p class="mt-1.5 text-xs text-rose-400 font-mono">{{ $message }}</p>
-                            @enderror
-                        </div>
-
-                        <!-- Submit Button -->
-                        <div class="pt-2">
-                            <button type="submit" 
-                                    class="w-full sm:w-auto px-8 py-3.5 bg-white text-black hover:bg-neutral-200 text-xs font-semibold tracking-luxury uppercase transition duration-200 flex items-center justify-center space-x-2">
-                                <span>Send Message</span>
-                                <span class="text-sm font-mono">&rarr;</span>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- ================= FOOTER ================= -->
     <footer class="border-t border-white/5 py-12 bg-brand-dark">
         <div class="max-w-7xl mx-auto px-6 sm:px-8 flex flex-col sm:flex-row items-center justify-between text-xs text-neutral-500 font-light space-y-4 sm:space-y-0">
             <p>&copy; {{ date('Y') }} Adnan Mahmoudi. All rights reserved.</p>
